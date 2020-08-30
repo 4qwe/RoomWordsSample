@@ -10,7 +10,7 @@ import java.util.List;
 public class WordRepository {
 
     private WordDao mWordDao;
-    private LiveData<List<Word>> mAllWords;
+    private LiveData<List<Word>> mAllWords; //hier ist unsere List<Word> als LiveData gewrappt
 
     WordRepository(Application application) {
         WordRoomDatabase db = WordRoomDatabase.getDatabase(application); //Handle für die Database
@@ -23,7 +23,7 @@ public class WordRepository {
     }
 
     public void insert(Word word) {
-        new insertAsyncTask(mWordDao).execute(word); // die Methode als Async Task, damit der
+        new insertAsyncTask(mWordDao).execute(word); // die insert-Methode als Async Task, damit der
         //main thread für das UI frei bleibt
     }
 
